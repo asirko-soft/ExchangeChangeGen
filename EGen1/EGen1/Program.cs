@@ -24,8 +24,8 @@ namespace EGen1
             service.Url = new Uri(url);
             Console.WriteLine("[{0}]: Connection to server {1} established", DateTime.Now.ToString(), args[0]);
 
-        StartCycle:
-
+        while(true)
+            { 
             DateTime startTime = DateTime.Now;
             DateTime nextCycleTime = startTime.AddMinutes(60);
 
@@ -74,8 +74,8 @@ namespace EGen1
             TimeSpan sleepTime = nextCycleTime - DateTime.Now;
             Console.WriteLine("[{0}]: Waiting {1} minutes to start next cycle...",DateTime.Now.ToString(), sleepTime.Minutes.ToString());
             Thread.Sleep(sleepTime);
-            
-            goto StartCycle;
+           
+        }
             
         }
 
