@@ -1,11 +1,12 @@
-D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\EGen1.exe.config
-D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\EGen1.exe
-D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\EGen1.pdb
 D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\Microsoft.Exchange.WebServices.Auth.dll
 D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\Microsoft.Exchange.WebServices.dll
 D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\Microsoft.Exchange.WebServices.pdb
 D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\Microsoft.Exchange.WebServices.xml
 D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\Microsoft.Exchange.WebServices.Auth.pdb
 D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\Microsoft.Exchange.WebServices.Auth.xml
-D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\obj\Debug\EGen1.exe
-D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\obj\Debug\EGen1.pdb
+D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\obj\Debug\ExchangeChangeGenerator.csprojResolveAssemblyReference.cache
+D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\ExchangeChGen.exe.config
+D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\ExchangeChGen.exe
+D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\bin\Debug\ExchangeChGen.pdb
+D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\obj\Debug\ExchangeChGen.exe
+D:\ExchangeChangeGen\ExchangeChangeGen\EGen1\EGen1\obj\Debug\ExchangeChGen.pdb
