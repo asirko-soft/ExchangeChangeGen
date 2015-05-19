@@ -65,6 +65,7 @@ namespace ExchangeChangeGenerator
                 ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2010);
                 service.Credentials = new WebCredentials(this.credentials[0], this.credentials[1]);
                 service.Url = new Uri("https://" + this.serverIP + "/EWS/Exchange.asmx");
+                service.Timeout = 300000;
                 try
                 {
                     service.FindFolders(WellKnownFolderName.Inbox, new FolderView(1));
