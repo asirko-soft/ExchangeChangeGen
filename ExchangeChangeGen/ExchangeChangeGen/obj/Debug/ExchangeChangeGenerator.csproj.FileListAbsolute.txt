@@ -22,3 +22,15 @@ D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\D
 D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\Debug\Microsoft.Exchange.WebServices.Auth.pdb
 D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\Debug\Microsoft.Exchange.WebServices.Auth.xml
 D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\obj\Debug\ExchangeChangeGenerator.csprojResolveAssemblyReference.cache
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\Debug\ExchangeChGen.exe.config
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\obj\Debug\ExchangeChGen.exe
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\obj\Debug\ExchangeChGen.pdb
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\Debug\ExchangeChGen.exe
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\Debug\ExchangeChGen.pdb
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\Debug\Microsoft.Exchange.WebServices.Auth.dll
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\Debug\Microsoft.Exchange.WebServices.dll
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\Debug\Microsoft.Exchange.WebServices.pdb
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\Debug\Microsoft.Exchange.WebServices.xml
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\Debug\Microsoft.Exchange.WebServices.Auth.pdb
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\bin\Debug\Microsoft.Exchange.WebServices.Auth.xml
+D:\ExchangeChangeGen\ExchangeChangeGen\ExchangeChangeGen\obj\Debug\ExchangeChangeGenerator.csprojResolveAssemblyReference.cache
