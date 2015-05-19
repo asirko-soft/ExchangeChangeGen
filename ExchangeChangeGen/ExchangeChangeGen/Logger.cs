@@ -17,7 +17,7 @@ namespace ExchangeChangeGenerator
             {
                 using (StreamWriter w = File.AppendText("log.txt"))
                 {
-                    w.WriteLine("[{0}][{1} - {2}]: {3}", level.ToString(), serverIP, DateTime.Now.ToString(), logMessage);
+                    w.WriteLine("[{0}][{1}][{2}]: {3}", level.ToString(), serverIP, DateTime.Now.ToString(), logMessage);
                 }
             }
         }

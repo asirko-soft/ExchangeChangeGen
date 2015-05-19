@@ -13,8 +13,6 @@ namespace ExchangeChangeGenerator
 {
     class Program
     {
-        //private static readonly object _lock = new object();
-
         static void Main(string[] args)
         {
             if (args.Length == 0)
@@ -52,27 +50,5 @@ namespace ExchangeChangeGenerator
         {
             return true;
         }
-
-        //public static void writeToLog(string logMessage, string serverIP)
-        //{
-        //    lock (_lock)
-        //    {
-        //        using (StreamWriter w = File.AppendText("log.txt"))
-        //        {
-        //            w.WriteLine("[{0} - {1}] - {2}", serverIP, DateTime.Now.ToString(), logMessage);
-        //        }
-        //    }
-        //}
-
-        //public static void writeToLog(string logMessage)
-        //{
-        //    lock (_lock)
-        //    {
-        //        using (StreamWriter w = File.AppendText("log.txt"))
-        //        {
-        //            w.WriteLine("[{0}] - {1}", DateTime.Now.ToString(), logMessage);
-        //        }
-        //    }
-        //}
     }
 }

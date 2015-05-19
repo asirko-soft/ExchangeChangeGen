@@ -99,7 +99,7 @@ namespace ExchangeChangeGenerator
             catch (Exception e)
             {
                 Console.WriteLine("Something wrong with server {0}, please see logs", serverIP);
-                Logger.Log("Something wrong with server " + e.Message + ". Stack Trace: " + e.StackTrace, LogLevel.Error, serverIP);            
+                Logger.Log(e.Message + "Stack Trace: " + e.StackTrace, LogLevel.Error, serverIP);            
                 return;
             }
         }
