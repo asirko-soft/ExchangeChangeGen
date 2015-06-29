@@ -2,10 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ExchangeChangeGenerator
 {
@@ -46,23 +43,23 @@ namespace ExchangeChangeGenerator
 
         private void deleteMessages(ExchangeService service)
         {
-            Logger.Log("Cleanup Inbox Folders.", LogLevel.Info, serverIP);
+            Logger.Log("Cleanup Inbox and Draft folders", LogLevel.Info, serverIP);
 
-            FindItemsResults<Item> results = null;
-            results = service.FindItems(WellKnownFolderName.Inbox, new ItemView(100000));
+            List<Folder> folderCollection = new List<Folder>();
 
-            Logger.Log(results.TotalCount + " messages will be deleted.", LogLevel.Info, serverIP);
+            folderCollection.Add(Folder.Bind(service, WellKnownFolderName.Inbox));
+            folderCollection.Add(Folder.Bind(service, WellKnownFolderName.Drafts));
 
-            for (int i = 0; i < results.TotalCount; i++)
+            foreach (var folder in folderCollection)
             {
-                results.Items[i].Delete(DeleteMode.HardDelete);
-            }
+                folder.Empty(DeleteMode.HardDelete, true);
+            }         
         }
         public void startGenerator()
         {
             try
             {
-                ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2010);
+                ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2010_SP1);
                 service.Credentials = new WebCredentials(this.credentials[0], this.credentials[1]);
                 service.Url = new Uri("https://" + this.serverIP + "/EWS/Exchange.asmx");
                 service.Timeout = 300000;
@@ -70,28 +67,46 @@ namespace ExchangeChangeGenerator
                 {
                     service.FindFolders(WellKnownFolderName.Inbox, new FolderView(1));
                 }
+
+                catch (ServiceResponseException e)
+                {
+                    clearMailQueue();
+                }
+
                 catch (Exception e)
                 {
                     Console.WriteLine("Sorry, the server {0} is unreachable, please see logs", serverIP);
                     Logger.Log("Sorry, the server is unreachable with error: " + e.Message + ". Stack Trace: " + e.StackTrace, LogLevel.Error, serverIP);
                     return;
                 }
+
+
                 Console.WriteLine("Connection to server {0} successfully established", this.serverIP);
                 Logger.Log("Connection to server successfully established", LogLevel.Info, serverIP);
 
                 while (true)
                 {
-                    DateTime startTime = DateTime.Now;
-                    DateTime nextCycleTime = startTime.AddMinutes(this.generateTime);
-
-                    deleteMessages(service);
-                    sendMessages(service);
-
-                    TimeSpan sleepTime = nextCycleTime - DateTime.Now;
-                    if (sleepTime.TotalMilliseconds >= 0)
+                    try
                     {
-                        Logger.Log("Waiting " + sleepTime.Minutes.ToString() + " minutes to start next cycle.", LogLevel.Info, serverIP);
-                        Thread.Sleep(sleepTime);
+                        DateTime startTime = DateTime.Now;
+                        DateTime nextCycleTime = startTime.AddMinutes(this.generateTime);
+
+                        sendMessages(service);
+
+                        TimeSpan sleepTime = nextCycleTime - DateTime.Now;
+                        if (sleepTime.TotalMilliseconds >= 0)
+                        {
+                            Logger.Log("Waiting " + sleepTime.Minutes.ToString() + " minutes to start next cycle.", LogLevel.Info, serverIP);
+                            Thread.Sleep(sleepTime);
+                        }
+                    }
+                    catch (ServiceResponseException)
+                    {
+                        deleteMessages(service);
+                    }
+                    catch (CreateAttachmentException)
+                    {
+                        clearMailQueue();
                     }
                     
                 }
@@ -99,7 +114,7 @@ namespace ExchangeChangeGenerator
             catch (Exception e)
             {
                 Console.WriteLine("Something wrong with server {0}, please see logs", serverIP);
-                Logger.Log(e.Message + ". Stack Trace: " + e.StackTrace, LogLevel.Error, serverIP);            
+                Logger.Log(e.Message + ". Stack Trace: " + e.StackTrace, LogLevel.Error, serverIP);
                 return;
             }
         }
@@ -111,6 +126,17 @@ namespace ExchangeChangeGenerator
             random.NextBytes(data);
             Directory.CreateDirectory(serverIP.ToString());
             File.WriteAllBytes(serverIP.ToString()+"\\attachment.dat", data);
+        }
+
+        private void clearMailQueue()
+        {
+            Logger.Log("CreateAttachemtException caught. Trying to delete mail.que file to free disk space.", LogLevel.Warning, serverIP);
+            PowerShellConnector powershellConnector = new PowerShellConnector(serverIP, credentials[0], credentials[1]);
+            WMIConnector wmiConnector = new WMIConnector(serverIP, credentials[0], credentials[1]);
+            wmiConnector.StopExchangeService();
+            powershellConnector.PerformCommandInRunspace(powershellConnector.DeleteAndRecreateMailQue, PSInstanceToConnect.Default);
+            wmiConnector.StartExchangeService();
+            powershellConnector.PerformCommandInRunspace(powershellConnector.MountMailbox, PSInstanceToConnect.Exchange);
         }
     }
 }

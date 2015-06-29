@@ -1,11 +1,6 @@
-﻿using Microsoft.Exchange.WebServices.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic.FileIO;
 
@@ -21,7 +16,7 @@ namespace ExchangeChangeGenerator
             }
             else
             {
-                Logger.Log("---------------------------------------------------------");
+                Logger.Log("--------Exchange Change Generator successfully started--------");
                 ServicePointManager.ServerCertificateValidationCallback = CertificateValidationCallBack;
 
                 List<ExchangeGenerator> serverList = new List<ExchangeGenerator>();
